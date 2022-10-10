@@ -8,6 +8,9 @@ import { CheckStockComponent } from './components/check-stock/check-stock.compon
 import { ReviewComponent } from './components/review/review.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+// Material
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

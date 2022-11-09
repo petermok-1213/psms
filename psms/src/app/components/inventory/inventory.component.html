@@ -5,7 +5,7 @@
     <mat-card-subtitle>{{item.tag}}</mat-card-subtitle>
     Qty: {{item.qty}}
     <mat-card-actions>
-        <button mat-button>+</button>
-        <button mat-button>-</button>
+        <button mat-button (click)="onClickPlus(item)">+</button>
+        <button mat-button (click)="onClickMinus(item)">-</button>
     </mat-card-actions>
 </mat-card>

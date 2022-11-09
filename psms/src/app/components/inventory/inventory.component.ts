@@ -25,6 +25,14 @@ export class InventoryComponent implements OnInit {
     }
   ]
 
+  onClickMinus(item: any) {
+    item.qty -= 1
+  }
+
+  onClickPlus(item: any) {
+    item.qty += 1
+  }
+
   constructor() { }
 
   ngOnInit(): void {

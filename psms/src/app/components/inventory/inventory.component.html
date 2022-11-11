@@ -1,6 +1,17 @@
+<section class="example-section">
+    <button mat-button (click)="clearFilter()">
+        Clear Filter
+    </button>
+    <mat-checkbox
+        *ngFor="let tag of tagSet"
+        [checked]="filterDict.get(tag)"
+        (change)="onSelectionChange(tag)"
+    >
+        {{tag}}
+    </mat-checkbox>
+</section>
 
-
-<mat-card *ngFor="let item of tempDb">
+<mat-card *ngFor="let item of outList">
     <mat-card-title>{{item.name}}</mat-card-title>
     <mat-card-subtitle>{{item.tag}}</mat-card-subtitle>
     Qty: {{item.qty}}

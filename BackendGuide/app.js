@@ -1,8 +1,8 @@
+const e = require("express")
 const mongoose = require("mongoose")
-const author = require("./models/author")
 
-const Author = require("./models/author")
-const Book = require("./models/book")
+let Author = require("./models/author")
+let Book = require("./models/book")
 
 /*
     "mongodb://localhost:27017/libDb" ->
@@ -27,7 +27,12 @@ mongoose.connect("mongodb://localhost:27017/libDb", (err) => {
     }
     console.log("Connected to DB")
 
+    insertSample()
+    querySample()
 
+})
+
+let insertSample = () => {
     // creating new Author
     let authorA = new Author({
         _id: new mongoose.Types.ObjectId(),
@@ -90,5 +95,71 @@ mongoose.connect("mongodb://localhost:27017/libDb", (err) => {
         }
         console.log("Saved multiple authors")
     })
+}
 
-})
+let querySample = () => {
+
+    // Find all authors 
+    Author.find(
+        {
+            "name.lastName": "Author"
+        },
+        (err, docs) => {        // docs is the output, which is an array
+            if (err)
+                throw err
+            console.log(docs)
+        }
+    )
+
+    // Find AuthorA
+    Author.findOne(
+        {
+            "name.firstName": "A",
+            "name.lastName": "Author"
+        },
+        (err, doc) => {        // doc is the output, which is an Object
+            if (err)
+                throw err
+            console.log(doc)
+        }
+    )
+
+    // Get the age of AuthorA
+    Author.findOne(
+        {
+            "name.firstName": "A",
+            "name.lastName": "Author"
+        },
+        "age",
+        (err, doc) => {        // doc is the output, which is an Object
+            if (err)
+                throw err
+            console.log(doc)
+        }
+    )
+
+    // using where
+    Author
+        .where({"name.lastName": "Author"})
+        .where("age")                           // where age is:
+        .gte(30)                                    // greater than
+        .lte(100)                                   // less than
+        .limit(10)                              // limit the amount of results
+        .sort("age")                            // sort by age
+        .exec( (err, docs) => {                 // at last, execute
+            console.log(docs)
+        })
+
+    // populate() allows refererning document in another collection
+    Book.find({}).populate("author").exec((err, docs) => {  // find({}) -> no constraints -> find all books
+        console.log(docs)                                   // populate("author") would return the author details linked by the authorId in Book
+    })
+}
+
+let updateSample = () => {
+
+}
+
+let deleteSample = () => {
+
+}

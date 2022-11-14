@@ -1,4 +1,4 @@
-<section class="example-section">
+<section>
     <button mat-button (click)="clearFilter()">
         Clear Filter
     </button>
@@ -20,3 +20,30 @@
         <button mat-button (click)="onClickMinus(item)">-</button>
     </mat-card-actions>
 </mat-card>
+
+<button mat-mini-fab color="primary" (click)="onClickNewItem()">
+    <mat-icon>plus_one</mat-icon>
+</button>
+
+<form *ngIf="allowInput">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Jasper"/>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Tag</mat-label>
+        <input matInput placeholder="Coffee"/>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <input matInput placeholder="1"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <button mat-button type="submit">
+            Submit
+        </button>
+    </mat-form-field>
+</form>

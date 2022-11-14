@@ -29,6 +29,8 @@ mongoose.connect("mongodb://localhost:27017/libDb", (err) => {
 
     insertSample()
     querySample()
+    updateSample()
+    deleteSample()
 
 })
 
@@ -158,8 +160,29 @@ let querySample = () => {
 
 let updateSample = () => {
 
+    // Updateing 1 document
+    Author.updateOne(
+        {"name.firstName" : "A"},
+        {
+            $set: {"name.firstName": "Z"}
+        },
+        (err, doc) => {
+            console.log(doc)
+        }
+    )
+    // updateMany() is the same
+
 }
 
 let deleteSample = () => {
+
+    // Deleting "AuthorZ"
+    Author.deleteOne(
+        {"name.firstName" : "Z"},
+        (err, doc) => {
+            console.log(doc)
+        }
+    )
+    // deleteMany() is the same
 
 }

@@ -28,6 +28,7 @@ export class InventoryComponent implements OnInit {
   tagSet = new Set()
   filterDict = new Map()
   outList = this.tempDb;
+  allowInput = false;
 
   constructor() { }
 
@@ -48,6 +49,11 @@ export class InventoryComponent implements OnInit {
   // Called upon - button of each card is clicked
   onClickPlus(item: any) {
     item.qty += 1
+  }
+
+  // Called upon +1 (new item) button is clied
+  onClickNewItem() {
+    this.allowInput = !this.allowInput
   }
 
   // Filter tempDb based on the values of each tag in tagDict

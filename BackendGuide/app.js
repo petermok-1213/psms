@@ -101,7 +101,7 @@ let insertSample = () => {
 
 let querySample = () => {
 
-    // Find all authors 
+    // Find all authors where lastName is "Author"
     Author.find(
         {
             "name.lastName": "Author"

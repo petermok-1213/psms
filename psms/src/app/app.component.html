@@ -1,7 +1,8 @@
-<ul>
-  <li><a href="/home">Home</a></li>
-  <li><a href="/checkStock">Check Stock</a></li>
-  <li><a href="/review">Review</a></li>
-</ul> 
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a mat-tab-link *ngFor="let link of links | keyvalue" routerLink={{link.value}}>
+    {{link.key}}
+  </a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
 <router-outlet></router-outlet>

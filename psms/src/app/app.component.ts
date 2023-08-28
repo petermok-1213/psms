@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'psms';
   activeLink = '';
   links = {
-    'Home': '/home',
+    'Home': '/',
     'Inventory': '/inventory',
     'Review': '/review'
   }

@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReviewComponent } from './components/review/review.component';
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
+  { path: "", component: HomeComponent },
   { path: "inventory", component: InventoryComponent },
   { path: "review", component: ReviewComponent },
   { path: "**", component: NotFoundComponent}

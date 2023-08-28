@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { ApiService } from 'src/app/api.service'
 
 @Component({
   selector: 'app-inventory',
@@ -30,7 +31,7 @@ export class InventoryComponent implements OnInit {
   outList = this.tempDb;
   allowInput = false;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.tempDb.forEach((item) => {
@@ -93,6 +94,10 @@ export class InventoryComponent implements OnInit {
     this.filterList()
   }
 
-
+  onClickGetInventory() {
+    this.apiService.getInventory().subscribe(inventory => {
+      console.log(inventory)
+    })
+  }
 
 }

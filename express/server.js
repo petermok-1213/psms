@@ -14,3 +14,10 @@ app.use((req, res, next) => {
 app.listen(PORT_NUM, () => {
     console.log("Listening on port %d", PORT_NUM)
 })
+
+app.get('/api/inventory', (req, res) => {
+    console.log("received")
+    res.json({
+        inventory: "testing"
+    })
+})

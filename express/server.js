@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
 
-const PORT_NUM = 8888
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
+const PORT = process.env.PORT || 8888
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", 
@@ -11,12 +15,11 @@ app.use((req, res, next) => {
     next()
 })
 
-app.listen(PORT_NUM, () => {
-    console.log("Listening on port %d", PORT_NUM)
+app.listen(PORT, () => {
+    console.log("Listening on port %d", PORT)
 })
 
 app.get('/api/inventory', (req, res) => {
-    console.log("received")
     res.json({
         inventory: "testing"
     })

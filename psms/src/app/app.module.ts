@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Custom
 import { HomeComponent } from './components/home/home.component';
-import { ReviewComponent } from './components/review/review.component';
+import { GptComponent } from './components/gpt/gpt.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
 
@@ -28,7 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   declarations: [
     AppComponent,
     HomeComponent,
-    ReviewComponent,
+    GptComponent,
     NotFoundComponent,
     InventoryComponent
   ],

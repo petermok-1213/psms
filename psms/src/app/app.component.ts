@@ -12,6 +12,6 @@ export class AppComponent {
   links = {
     'Home': '/',
     'Inventory': '/inventory',
-    'Review': '/review'
+    'GPT': '/gpt'
   }
 }

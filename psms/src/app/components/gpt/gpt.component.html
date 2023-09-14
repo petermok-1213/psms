@@ -1,1 +1,5 @@
-<p>This is the GPT page</p>
+<p [(ngModel)]="gptResponse"></p>
+<mat-form-field>
+    <input matInput placeholder="Enter your prompts here" [(ngModel)]="prompt"/>
+    <button mat-button type="button" (click)="onSubmit()">Submit</button>
+</mat-form-field>

@@ -7,19 +7,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const PORT = process.env.PORT || 8888
-const mongoClient = new MongoClient(process.env.MONGO_URI)
-
-async function connectToDb(mongoClient) {
-    await mongoClient.connect().catch((err) => {
-        console.log(err+" in connecting to Db")
-        return null
-    })
-    if (mongoClient) {
-        console.log("Connected to MongoDb")
-    }
-}
-
-connectToDb(mongoClient)
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", 

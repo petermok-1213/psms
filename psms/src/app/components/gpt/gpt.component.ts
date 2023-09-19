@@ -1,3 +1,6 @@
+import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/api.service';
+
 import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,14 +15,15 @@ export class GptComponent implements OnInit {
   prompt: string = "What can you do"
   gptResponse: string = "No response"
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     console.log("Prompt submitted")
-    // make a post request to backend
+    this.apiService.submitPrompt(this.prompt)
+    this.prompt = ""
   }
 
 }

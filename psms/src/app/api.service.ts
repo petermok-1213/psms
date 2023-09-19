@@ -9,7 +9,11 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     getInventory() {
-        return this.http.get(EXPRESS_URL+'/api/inventory')
+        return this.http.get(EXPRESS_URL+'/inventory')
+    }
+
+    submitPrompt(prompt: string) {
+        this.http.post(EXPRESS_URL+'/prompt', prompt)
     }
 
 }

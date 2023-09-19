@@ -19,8 +19,13 @@ app.listen(PORT, () => {
     console.log("Listening on port %d", PORT)
 })
 
-app.get('/api/inventory', (req, res) => {
+app.get('/inventory', (req, res) => {
     res.json({
         inventory: "testing"
     })
+})
+
+app.post('/prompt', (req, res) => {
+    console.log('received prompt')
+    res.json({})
 })

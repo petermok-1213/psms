@@ -2,8 +2,6 @@ const express = require('express')
 const router = require('./router'); // Import the router module
 const app = express()
 
-const DbService = require('./dbService')
-
 // Load environment variables from .env file during development
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()

@@ -25,9 +25,10 @@ app.listen(PORT, () => {
 })
 
 app.get('/inventory', (req, res) => {
-    res.json({
-        inventory: "testing"
-    })
+    // resolving the promise which contains the collection
+    dbService.getAllProducts().then(
+        (products) => { res.json(products) }
+    )
 })
 
 app.post('/prompt', (req, res) => {

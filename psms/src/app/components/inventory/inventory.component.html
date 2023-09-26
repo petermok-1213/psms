@@ -1,51 +1,12 @@
-<section>
-    <button mat-button (click)="clearFilter()">
-        Clear Filter
-    </button>
-    <mat-checkbox
-        *ngFor="let tag of tagSet"
-        [checked]="filterDict.get(tag)"
-        (change)="onSelectionChange(tag)"
-    >
-        {{tag}}
-    </mat-checkbox>
-</section>
-
-<mat-card *ngFor="let item of outList">
-    <mat-card-title>{{item.name}}</mat-card-title>
-    <mat-card-subtitle>{{item.tag}}</mat-card-subtitle>
-    Qty: {{item.qty}}
-    <mat-card-actions>
-        <button mat-button (click)="onClickPlus(item)">+</button>
-        <button mat-button (click)="onClickMinus(item)">-</button>
-    </mat-card-actions>
+<mat-card *ngFor="let product of inventory">
+    <mat-card-header>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.tag}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Price: {{product.price}}</p>
+        <p>Quantity: {{product.quantity}}</p>
+    </mat-card-content>
 </mat-card>
-
-<button mat-mini-fab color="primary" (click)="onClickNewItem()">
-    <mat-icon>plus_one</mat-icon>
-</button>
-
-<form *ngIf="allowInput">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Jasper"/>
-    </mat-form-field>
-    
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Tag</mat-label>
-        <input matInput placeholder="Coffee"/>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Quantity</mat-label>
-        <input matInput placeholder="1"/>
-    </mat-form-field>
-
-    <mat-form-field>
-        <button mat-button type="submit">
-            Submit
-        </button>
-    </mat-form-field>
-</form>
 
 <button mat-button (click)="onClickGetInventory()">Get Inventory</button>

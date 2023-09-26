@@ -9,15 +9,6 @@ class DbService {
         this.products = this.db.collection('products')
     }
     
-    async init() {
-        await this.products.insertOne({
-            name: 'Coffee Grinder',
-            tag: 'Coffee Accessory',
-            price: 20,
-            quantity: 100
-        })
-    }
-
     /*
         Returns a promise which contains the collection
         as an array of JSON object.

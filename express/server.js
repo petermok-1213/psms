@@ -10,8 +10,6 @@ if (process.env.NODE_ENV !== 'production') {
 const PORT = process.env.PORT || 8888
 const dbService = new DbService()
 
-dbService.init()
-
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", 
                "http://localhost:4200")

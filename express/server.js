@@ -1,4 +1,5 @@
 const express = require('express')
+const router = require('./router'); // Import the router module
 const app = express()
 
 const DbService = require('./dbService')
@@ -22,19 +23,10 @@ app.use((req, res, next) => {
     next()
 })
 
+// Use the router middleware
+app.use(router)
+
 // Start the Express server
 app.listen(PORT, () => {
     console.log("Listening on port %d", PORT)
 })
-
-app.get('/inventory', (req, res) => {
-    dbService.getAllProducts().then(
-        (products) => { res.json(products) }
-    )
-})
-
-app.post('/prompt', (req, res) => {
-    console.log('received prompt')
-    res.json({})
-})
-

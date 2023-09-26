@@ -10,16 +10,14 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const PORT = process.env.PORT || 8888
-const dbService = new DbService()
-dbService.connect()
 
 // Set up CORS (Cross-Origin Resource Sharing) middleware
 app.use((req, res, next) => {
     // Allow requests from 'http://localhost:4200' (Angular)
     res.header("Access-Control-Allow-Origin", 
-               "http://localhost:4200")
+            "http://localhost:4200")
     res.header("Access-Control-Allow-Headers", 
-               "Origin, X-Requested-With, Content-Type, Accept")
+            "Origin, X-Requested-With, Content-Type, Accept")
     next()
 })
 

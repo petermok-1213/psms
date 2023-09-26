@@ -1,19 +1,25 @@
+// Load environment variables from .env file
 require('dotenv').config()
 const { MongoClient } = require('mongodb')
 
 class DbService {
 
     constructor() {
+        this.client = null
+        this.db = null
+        this.products = null
+    }
+
+    connect() {
         this.client = new MongoClient(process.env.MONGO_URI)
         this.db = this.client.db('ProductDb')
         this.products = this.db.collection('products')
     }
     
-    /*
-        Returns a promise which contains the collection
-        as an array of JSON object.
-        The promise will be resolved in server.js
-    */
+    /**
+     * Fetch all products from the 'products' collection.
+     * @returns {Promise<Array>} A promise that resolves to an array of product objects.
+     */
     async getAllProducts() {
         return await this.products.find({}).toArray()
     }

@@ -4,6 +4,10 @@ const { MongoClient } = require('mongodb')
 
 class DbService {
 
+    /**
+     * Connect to Db upon instantiation. Guarentee the connection is made and
+     * avoid TypeError araise from null objects calling MongoDb methods.
+     */
     constructor() {
         this.client = new MongoClient(process.env.MONGO_URI)
         this.db = this.client.db('ProductDb')
@@ -36,6 +40,5 @@ class DbService {
     }
     
 }
-
 
 module.exports = DbService

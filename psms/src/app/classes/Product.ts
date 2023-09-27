@@ -1,7 +1,8 @@
 /*
     A generic Product class representing all products stored in the inventory
 */
-class Product {
+export class Product {
+
     name: String
     tag: String
     price: number

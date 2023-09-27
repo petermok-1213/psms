@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { MatCardModule } from '@angular/material/card';
 import { ApiService } from 'src/app/api.service'
 
+import { Product } from '../../classes/Product'
+
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
@@ -9,20 +11,24 @@ import { ApiService } from 'src/app/api.service'
 })
 export class InventoryComponent implements OnInit {
 
-  inventory: any = []
+  inventory: Array<Product> = []
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.getInventory().subscribe(
-      (inventory) => { this.inventory = inventory }
-    )
+    this.fetchInventory()
   }
 
-  onClickGetInventory() {
-    this.apiService.getInventory().subscribe(
-      (inventory) => { console.log(inventory) }
-    )
+  fetchInventory() {
+    this.apiService.getInventory().subscribe((response: any) => {
+      this.inventory = response.map((item: any) => {
+        return new Product(item.name, item.tag, item.quantity, item.price)
+      })
+    })
+  }
+
+  addProduct() {
+
   }
 
 }

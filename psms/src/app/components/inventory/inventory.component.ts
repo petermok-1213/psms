@@ -12,6 +12,7 @@ import { Product } from '../../classes/Product'
 export class InventoryComponent implements OnInit {
 
   inventory: Array<Product> = []
+  newProduct: Product = new Product('', '', 0, 0)
 
   constructor(private apiService: ApiService) { }
 
@@ -28,7 +29,15 @@ export class InventoryComponent implements OnInit {
   }
 
   addProduct() {
-
+    this.apiService.addProduct(this.newProduct).subscribe({
+      next: (response: any) => {
+        console.log('Product added:', response)
+        this.newProduct = new Product('', '', 0, 0)
+        this.fetchInventory()
+      },
+      error: (error: any) => {
+        console.error('Error adding product:', error)
+      }
+    })
   }
-
 }

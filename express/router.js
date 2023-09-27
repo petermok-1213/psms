@@ -1,8 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const router = express.Router()
-const DbService = require('./dbService')
 
+const DbService = require('./dbService')
 const dbService = new DbService()
+
+router.use(bodyParser.json())
 
 // Route to get all products from the database
 router.get('/inventory', async (req, res) => {
@@ -13,7 +16,19 @@ router.get('/inventory', async (req, res) => {
         console.error('Error fetching products:', error)
         res.status(500).json({ error: 'Internal Server Error' })
     }
-});
+})
+
+// Route to add a new product to the database
+router.post('/inventory', async (req, res) => {
+    try {
+        const product = req.body
+        const result = await dbService.addProduct(product)
+        res.json(result)
+    } catch (error) {
+        console.error('Error adding product:', error)
+        res.status(500).json({ error: 'Internal Server Error' })
+    }
+})
 
 // Route to handle prompts (currently just logs the receipt of a prompt)
 router.post('/prompt', (req, res) => {

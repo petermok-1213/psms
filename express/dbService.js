@@ -1,6 +1,6 @@
 // Load environment variables from .env file
 require('dotenv').config()
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 
 class DbService {
 
@@ -23,6 +23,21 @@ class DbService {
             return await this.products.find({}).toArray()
         } catch (error) {
             console.error('Error fetching products:', error)
+            throw error // Re-throw the error to be handled by the caller
+        }
+    }
+
+    /**
+     * Add a new product to the 'products' collection.
+     * @param {Object} product - The product object to add to the database.
+     * @returns {Promise<Object>} A promise that resolves to the inserted product object.
+     */
+    async addProduct(product) {
+        try {
+            const result = await this.products.insertOne(product)
+            return result.insertedId
+        } catch (error) {
+            console.error('Error adding product in DbService:', error)
             throw error // Re-throw the error to be handled by the caller
         }
     }

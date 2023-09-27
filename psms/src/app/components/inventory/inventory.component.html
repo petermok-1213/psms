@@ -1,4 +1,19 @@
-<button mat-button (click)="addProduct()">Add Product</button>
+<form (submit)="addProduct()">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="newProduct.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Tag" [(ngModel)]="newProduct.tag" name="tag" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Price" [(ngModel)]="newProduct.price" name="price" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Quantity" [(ngModel)]="newProduct.quantity" name="quantity" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Add Product</button>
+  </form>
+
 <button mat-button (click)="fetchInventory()">Refresh</button>
 
 <mat-card *ngFor="let product of inventory">

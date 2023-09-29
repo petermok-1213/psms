@@ -39,7 +39,9 @@ export class InventoryComponent implements OnInit {
   fetchInventory() {
     this.apiService.getInventory().subscribe((response: any) => {
       this.inventory = response.map((item: any) => {
-        return new Product(item.name, item.tag, item.quantity, item.price, item._id)
+        let id = item._id
+        item = item.body
+        return new Product(item.name, item.tag, item.quantity, item.price, id)
       })
     })
   }
@@ -48,6 +50,8 @@ export class InventoryComponent implements OnInit {
    * Adds a new product to the inventory using the API service and updates the inventory array.
    */
   addProduct() {
+    this.newProduct.price = Number(this.newProduct.price)
+    this.newProduct.quantity = Number(this.newProduct.quantity)
     this.apiService.addProduct(this.newProduct).subscribe({
       next: (response: any) => {
         console.log('Product added:', response)

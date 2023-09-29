@@ -15,7 +15,15 @@ export class ApiService {
     }
 
     addProduct(product: Product) {
-        return this.http.post(EXPRESS_URL+'/inventory', product)
+        return this.http.post(EXPRESS_URL+'/inventory', {body: product})
+    }
+
+    updateProduct(product: Product) {
+        return this.http.put(EXPRESS_URL+'/inventory', {body: product})
+    }
+
+    deleteProduct(product: Product) {
+        return this.http.delete(EXPRESS_URL+'/inventory', {body: product})
     }
 
     submitPrompt(prompt: string) {

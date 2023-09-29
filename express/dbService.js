@@ -43,6 +43,39 @@ class DbService {
     }
 
     /**
+     * 
+     * @param {Object} product - The product object to update in the database.
+     * @returns {Promise<Object>} A promise that resolves to the updated product object.
+     */
+    async updateProduct(product) {
+        try {
+            const result = await this.products.updateOne(
+                { _id: product._id },
+                { $set: product }
+            )
+            return result
+        } catch (error) {
+            console.error('Error updating product in DbService:', error)
+            throw error
+        }
+    }
+
+    /**
+     * 
+     * @param {Object} product - The product object to delete in the database.
+     * @returns {Promise<Object>} A promise that resolves to the deleted product object.
+     */
+    async deleteProduct(product) {
+        try {
+            const result = await this.products.deleteOne({ _id: product._id })
+            return result
+        } catch (error) {
+            console.error('Error deleting product in DbService:', error)
+            throw error
+        }
+    }
+
+    /**
      * Close the database connection.
      */
     async closeConnection() {

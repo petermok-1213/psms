@@ -30,6 +30,28 @@ router.post('/inventory', async (req, res) => {
     }
 })
 
+router.put('/inventory', async (req, res) => {
+    try {
+        const product = req.body
+        const result = await dbService.updateProduct(product)
+        res.json(result)
+    } catch (error) {
+        console.error('Error updating product:', error)
+        res.status(500).json({ error: 'Internal Server Error' })
+    }
+})
+
+router.delete('/inventory', async (req, res) => {
+    try {
+        const product = req.body
+        const result = await dbService.deleteProduct(product)
+        res.json(result) 
+    } catch (error) {
+        console.error('Error deleting product:', error)
+        res.status(500).json({ error: 'Internal Server Error' })
+    }
+})
+
 // Route to handle prompts (currently just logs the receipt of a prompt)
 router.post('/prompt', (req, res) => {
     console.log('Received prompt')

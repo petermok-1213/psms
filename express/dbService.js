@@ -1,6 +1,6 @@
 // Load environment variables from .env file
 require('dotenv').config()
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 
 class DbService {
 
@@ -49,9 +49,15 @@ class DbService {
      */
     async updateProduct(product) {
         try {
+            console.log('Updating product:', product)
             const result = await this.products.updateOne(
-                { _id: product._id },
-                { $set: product }
+                { _id: new ObjectId(product._id) },
+                { $set: {
+                    name: product.name,
+                    tag: product.tag,
+                    price: product.price,
+                    quantity: product.quantity
+                }}
             )
             return result
         } catch (error) {
@@ -67,7 +73,7 @@ class DbService {
      */
     async deleteProduct(product) {
         try {
-            const result = await this.products.deleteOne({ _id: product._id })
+            const result = await this.products.deleteOne({ _id: new ObjectId(product._id) })
             return result
         } catch (error) {
             console.error('Error deleting product in DbService:', error)

@@ -32,7 +32,7 @@ router.post('/inventory', async (req, res) => {
 
 router.put('/inventory', async (req, res) => {
     try {
-        const product = req.body
+        const product = req.body.body
         const result = await dbService.updateProduct(product)
         res.json(result)
     } catch (error) {

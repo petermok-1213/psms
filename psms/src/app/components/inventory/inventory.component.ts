@@ -39,7 +39,7 @@ export class InventoryComponent implements OnInit {
   fetchInventory() {
     this.apiService.getInventory().subscribe((response: any) => {
       this.inventory = response.map((item: any) => {
-        return new Product(item.name, item.tag, item.quantity, item.price)
+        return new Product(item.name, item.tag, item.quantity, item.price, item._id)
       })
     })
   }
@@ -65,6 +65,7 @@ export class InventoryComponent implements OnInit {
    * @param product The product to update.
    */
   updateProduct(product: Product) {
+    console.log(product._id)
     this.apiService.updateProduct(product).subscribe({
       next: (response: any) => {
         console.log('Product updated:', response)

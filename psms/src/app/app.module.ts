@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { GptComponent } from './components/gpt/gpt.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
+import { EditProductDialogComponent } from './components/edit-product-dialog/edit-product-dialog.component';
 
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -31,7 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeComponent,
     GptComponent,
     NotFoundComponent,
-    InventoryComponent
+    InventoryComponent,
+    EditProductDialogComponent
   ],
   imports: [
     HttpClientModule,

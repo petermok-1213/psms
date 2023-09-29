@@ -1,1 +1,15 @@
-<p>Hi</p>
+<form>
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="product.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Tag" [(ngModel)]="product.tag" name="tag" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Price" [(ngModel)]="product.price" name="price" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+</form>

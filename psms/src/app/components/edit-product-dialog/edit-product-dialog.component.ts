@@ -11,14 +11,14 @@ export class EditProductDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<EditProductDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product
+    @Inject(MAT_DIALOG_DATA) public product: Product
   ) { }
 
   /**
    * Saves the changes made to the product and closes the dialog.
    */
   save() {
-    this.dialogRef.close(this.data)
+    this.dialogRef.close(this.product)
   }
 
   /**

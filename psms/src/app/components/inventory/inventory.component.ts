@@ -68,7 +68,8 @@ export class InventoryComponent implements OnInit {
    * @param product The product to update.
    */
   updateProduct(product: Product) {
-    console.log(product._id)
+    product.price = Number(product.price)
+    product.quantity = Number(product.quantity)
     this.apiService.updateProduct(product).subscribe({
       next: (response: any) => {
         console.log('Product updated:', response)

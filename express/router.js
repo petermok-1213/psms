@@ -32,7 +32,7 @@ router.post('/inventory', async (req, res) => {
 
 router.put('/inventory', async (req, res) => {
     try {
-        const product = req.body.body
+        const product = req.body
         const result = await dbService.updateProduct(product)
         res.json(result)
     } catch (error) {
@@ -44,6 +44,7 @@ router.put('/inventory', async (req, res) => {
 router.delete('/inventory', async (req, res) => {
     try {
         const product = req.body
+        console.log('Deleting product:', product)
         const result = await dbService.deleteProduct(product)
         res.json(result) 
     } catch (error) {

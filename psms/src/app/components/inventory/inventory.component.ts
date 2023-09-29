@@ -40,7 +40,6 @@ export class InventoryComponent implements OnInit {
     this.apiService.getInventory().subscribe((response: any) => {
       this.inventory = response.map((item: any) => {
         let id = item._id
-        item = item.body
         return new Product(item.name, item.tag, item.quantity, item.price, id)
       })
     })

@@ -25,6 +25,12 @@
         <p>Price: {{product.price}}</p>
         <p>Quantity: {{product.quantity}}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="moreQty(product)">+</button>
+      <button mat-button (click)="lessQty(product)">-</button>
+      <button mat-button (click)="editProduct(product)">Edit</button>
+      <button mat-button (click)="deleteProduct(product)">Delete</button>
+    </mat-card-actions>
 </mat-card>
 
 

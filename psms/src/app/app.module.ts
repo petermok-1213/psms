@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     GptComponent,
     NotFoundComponent,
     InventoryComponent,
-    EditProductDialogComponent
+    EditProductDialogComponent,
+    ErrorDialogComponent
   ],
   imports: [
     HttpClientModule,

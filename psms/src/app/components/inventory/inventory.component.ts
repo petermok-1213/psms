@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/api.service'
 import { Product } from '../../classes/Product'
 import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component'
 import { MatDialog } from '@angular/material/dialog'
+import { ErrorDialogComponent } from 'src/app/error-dialog/error-dialog.component'
 
 @Component({
   selector: 'app-inventory',
@@ -49,6 +50,11 @@ export class InventoryComponent implements OnInit {
    * Adds a new product to the inventory using the API service and updates the inventory array.
    */
   addProduct() {
+    if (this.newProduct.name == '') {
+      this.openErrorDialog('Product name can not be empty')
+      return
+    }
+
     this.newProduct.price = Number(this.newProduct.price)
     this.newProduct.quantity = Number(this.newProduct.quantity)
     this.apiService.addProduct(this.newProduct).subscribe({
@@ -68,6 +74,11 @@ export class InventoryComponent implements OnInit {
    * @param product The product to update.
    */
   updateProduct(product: Product) {
+    if (product.name == '') {
+      this.openErrorDialog('Product name can not be empty')
+      return
+    }
+
     product.price = Number(product.price)
     product.quantity = Number(product.quantity)
     this.apiService.updateProduct(product).subscribe({
@@ -131,6 +142,13 @@ export class InventoryComponent implements OnInit {
       error: (error: any) => {
         console.error('Error deleting product:', error)
       }
+    })
+  }
+
+  openErrorDialog(error: String) {
+    this.dialog.open(ErrorDialogComponent, {
+      width: '400px',
+      data: error
     })
   }
 

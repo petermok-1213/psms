@@ -13,6 +13,3 @@ This project uses the MEAN stack.
 - Frontend: Angular
 - Backend: Express
 - Database: Mongodb (Mongoose)
-
-## Update
-I am trying to incorporate GPT into the CMS so that users can manipulate the CMS using Natural Language.
